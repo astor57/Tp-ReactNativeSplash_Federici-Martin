@@ -1,28 +1,34 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Image, TouchableOpacity, Alert } from 'react-native';
 
 const img= require('./assets/fotomila.png');
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Image source={img}></Image>
-      <StatusBar style="dark" />
-      <Text>Email</Text>
+      <StatusBar style='dark'/>
+      <Image
+        source={img} 
+        style={styles.imagen}
+        resizeMode="contain"
+      />
+
       <TextInput
-      style={styles.input}
-      placeholder='sarobeLPM@gmail.com'
-      keyboardType='default'
+        placeholder="soyfranSaro@gmail.com"
+        style={styles.input}
+        placeholderTextColor="#888"
       />
-      <Text>Contraseña</Text>
+
       <TextInput
-      style={styles.input}
-      placeholder='soyFranSaro333             '
-      keyboardType='default'
+        placeholder="contraseña333"
+        style={styles.input}
+        secureTextEntry
+        placeholderTextColor="#888"
       />
-      <Button
-      title='Ingresar'
-      />
+
+      <TouchableOpacity style={styles.button} onPress={()=> Alert.alert('Registro Exitoso')}>
+        <Text style={styles.buttonText}>Iniciar Sesión</Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -30,11 +36,39 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#f0f0f0',
     alignItems: 'center',
     justifyContent: 'center',
+    padding: 20,
   },
-  input:{
-    height: 35, borderColor:'green', borderWidth:2, padding:2,
-  }
+  imagen: {
+    width: 200,
+    height: 200,
+    marginBottom: 20,
+  },
+  input: {
+    width: '80%',
+    height: 50,
+    backgroundColor: '#fff',
+    borderRadius: 10,
+    paddingHorizontal: 15,
+    marginBottom: 15,
+    fontSize: 16,
+    borderColor: '#ccc',
+    borderWidth: 1,
+  },
+  button: {
+    width: '80%',
+    height: 55,
+    backgroundColor: '#007AFF',
+    borderRadius: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 10,
+  },
+  buttonText: {
+    color: '#fff',
+    fontSize: 18,
+    fontWeight: '600',
+  },
 });
